@@ -47,7 +47,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
               </span>
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Good morning, Alex
+              Good morning, Aryan
             </h1>
             <p className="text-xs text-slate-500">
               Real-time cold-chain telemetry and fleet monitoring across all active transit corridors.

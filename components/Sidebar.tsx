@@ -157,11 +157,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex items-center justify-between rounded-lg p-2 bg-white border border-slate-200">
           <div className="flex items-center gap-2.5 min-w-0">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-white shrink-0 font-bold text-xs">
-              AM
+              AG
             </div>
             <div className="min-w-0 text-left">
               <p className="text-xs font-extrabold text-slate-900 truncate">
-                {isFleetOwner ? 'Alex Morgan' : 'Rajesh Verma'}
+                {isFleetOwner ? 'Aryan Goswami' : 'Rajesh Verma'}
               </p>
               <p className="text-[10px] text-slate-500 truncate">
                 {isFleetOwner ? 'Fleet Manager' : 'Receiving Lead'}
