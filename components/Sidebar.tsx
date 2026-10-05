@@ -13,9 +13,9 @@ import {
   CheckCircle2,
   Wifi,
   FileText,
-  User,
   ShieldCheck,
   PackageCheck,
+  X,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -26,6 +26,8 @@ interface SidebarProps {
   onWholesalerTabChange: (tab: WholesalerNavTab) => void;
   shipmentCount?: number;
   alertCount?: number;
+  isMobileOpen?: boolean;
+  onCloseMobileMenu?: () => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -36,6 +38,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onWholesalerTabChange,
   shipmentCount = 24,
   alertCount = 3,
+  isMobileOpen = false,
+  onCloseMobileMenu,
 }) => {
   const isFleetOwner = currentRole === 'fleet_owner';
 
@@ -66,15 +70,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const currentItems = isFleetOwner ? fleetNavItems : wholesalerNavItems;
   const currentActive = isFleetOwner ? activeFleetTab : activeWholesalerTab;
 
-  return (
-    <aside className="w-64 border-r border-slate-200 bg-white flex flex-col justify-between shrink-0 h-[calc(100vh-4rem)] sticky top-16 select-none">
+  const handleNavClick = (itemId: string) => {
+    if (isFleetOwner) onFleetTabChange(itemId as FleetNavTab);
+    else onWholesalerTabChange(itemId as WholesalerNavTab);
+    if (onCloseMobileMenu) onCloseMobileMenu();
+  };
+
+  const navContent = (
+    <div className="flex flex-col justify-between h-full select-none">
       {/* Top Section */}
       <div className="p-3 space-y-4 overflow-y-auto">
         {/* User Role Card */}
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 space-y-1">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
-            Active Workspace
-          </span>
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+              Active Workspace
+            </span>
+            {onCloseMobileMenu && (
+              <button
+                onClick={onCloseMobileMenu}
+                className="md:hidden p-1 text-slate-400 hover:text-slate-600 rounded-md"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            )}
+          </div>
           <p className="text-xs font-black text-slate-900 truncate">
             {isFleetOwner ? 'Fleet Owner Portal' : 'Wholesaler Portal'}
           </p>
@@ -92,31 +112,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
             return (
               <button
                 key={item.id}
-                onClick={() => {
-                  if (isFleetOwner) onFleetTabChange(item.id as FleetNavTab);
-                  else onWholesalerTabChange(item.id as WholesalerNavTab);
-                }}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${isActive
-                  ? 'bg-slate-900 text-white shadow-xs'
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                  }`}
+                onClick={() => handleNavClick(item.id)}
+                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                  isActive
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <Icon
-                    className={`h-4 w-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-500'
-                      }`}
+                    className={`h-4 w-4 shrink-0 ${
+                      isActive ? 'text-white' : 'text-slate-500'
+                    }`}
                   />
                   <span className="truncate">{item.label}</span>
                 </div>
 
                 {item.badge && (
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${item.isAlert
-                      ? 'bg-red-500 text-white'
-                      : isActive
+                    className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                      item.isAlert
+                        ? 'bg-red-500 text-white'
+                        : isActive
                         ? 'bg-slate-800 text-sky-400'
                         : 'bg-slate-100 text-slate-600'
-                      }`}
+                    }`}
                   >
                     {item.badge}
                   </span>
@@ -150,6 +170,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
         </div>
       </div>
-    </aside>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="hidden md:flex w-64 border-r border-slate-200 bg-white shrink-0 h-[calc(100vh-4rem)] sticky top-16 flex-col">
+        {navContent}
+      </aside>
+
+      {/* Mobile Drawer Backdrop & Drawer */}
+      {isMobileOpen && (
+        <div className="md:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop */}
+          <div
+            onClick={onCloseMobileMenu}
+            className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs transition-opacity"
+          />
+
+          {/* Drawer Sidebar Content */}
+          <aside className="relative z-10 w-72 max-w-[80vw] bg-white h-full shadow-2xl flex flex-col">
+            {navContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 };

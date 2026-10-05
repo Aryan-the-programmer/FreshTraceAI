@@ -29,7 +29,7 @@ export const LiveMapTab: React.FC<LiveMapTabProps> = ({
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
             <h1 className="text-2xl font-black text-slate-900 tracking-tight">
-              Live Fleet Tracking (Leaflet Interactive Map)
+              Live Fleet Tracking
             </h1>
             <p className="text-xs text-slate-500">
               Real-time location, thermal status, and long-range connectivity across Central India transit lines.

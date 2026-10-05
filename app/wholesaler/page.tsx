@@ -29,6 +29,7 @@ export default function WholesalerRoute() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<WholesalerNavTab>('overview');
   const [selectedShipmentId, setSelectedShipmentId] = useState<string>('SH-1024');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const currentShipment =
     mockShipments.find((s) => s.id === selectedShipmentId) || mockShipments[0];
@@ -46,7 +47,12 @@ export default function WholesalerRoute() {
 
   return (
     <div className="min-h-screen bg-slate-100 text-slate-900 flex flex-col font-sans">
-      <Header currentRole="wholesaler" onRoleSwitch={handleRoleSwitch} />
+      <Header
+        currentRole="wholesaler"
+        onRoleSwitch={handleRoleSwitch}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      />
 
       <div className="flex flex-1 overflow-hidden">
         <Sidebar
@@ -57,6 +63,8 @@ export default function WholesalerRoute() {
           onWholesalerTabChange={setActiveTab}
           shipmentCount={mockShipments.length}
           alertCount={mockAlerts.length}
+          isMobileOpen={isMobileMenuOpen}
+          onCloseMobileMenu={() => setIsMobileMenuOpen(false)}
         />
 
         <main className="flex-1 p-4 md:p-6 overflow-y-auto max-w-7xl mx-auto w-full">

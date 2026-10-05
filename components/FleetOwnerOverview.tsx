@@ -127,7 +127,7 @@ export const FleetOwnerOverview: React.FC<FleetOwnerOverviewProps> = ({
       <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <h2 className="text-lg font-black text-slate-900 tracking-tight">
-            Live Fleet Map (Interactive Leaflet)
+            Live Fleet Map
           </h2>
 
           {/* Legend */}
