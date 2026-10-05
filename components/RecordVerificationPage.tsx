@@ -140,7 +140,7 @@ export const RecordVerificationPage: React.FC<RecordVerificationPageProps> = ({
           Why does this matter?
         </h2>
         <p className="text-xs text-slate-600 leading-relaxed font-medium">
-          Shipment data can pass through many systems and people. FreshTrace AI creates a secure fingerprint of important records and stores that fingerprint in a shared verification system. If someone changes the original record later, the fingerprints will no longer match.
+          Shipment data can pass through many systems and people. FreshTrace creates a secure fingerprint of important records and stores that fingerprint in a shared verification system. If someone changes the original record later, the fingerprints will no longer match.
         </p>
       </div>
 

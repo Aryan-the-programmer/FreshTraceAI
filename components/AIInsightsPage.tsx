@@ -30,7 +30,7 @@ export const AIInsightsPage: React.FC<AIInsightsPageProps> = ({
           </h1>
         </div>
         <p className="text-xs text-slate-600 font-medium max-w-2xl leading-relaxed">
-          FreshTrace AI analyzes shipment conditions and historical patterns to estimate remaining shelf life and spoilage risk.
+          FreshTrace analyzes shipment conditions and historical patterns to estimate remaining shelf life and spoilage risk.
         </p>
       </div>
 

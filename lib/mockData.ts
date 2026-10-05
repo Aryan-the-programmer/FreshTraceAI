@@ -277,7 +277,7 @@ export const mockRelayNodes: RelayNode[] = [
   {
     id: 'Node C',
     tag: 'Node C (Cloud Core)',
-    truckId: 'FreshTrace AI Cloud',
+    truckId: 'FreshTrace Cloud',
     role: 'Cloud Core',
     description: 'Zero-loss reconciliation of time-series thermal log. Ledger timestamp preserved at ingestion point.',
     statusBadge: 'Zero Data Loss Assured',
@@ -492,6 +492,6 @@ export const mockConnectionNodes: ConnectionNode[] = [
     internetStatus: 'Unavailable',
     longRangeStatus: 'Relay Active',
     storedRecordsCount: 14,
-    relayPath: 'TRK-117 → Long-range connection → TRK-119 → Internet → FreshTrace AI',
+    relayPath: 'TRK-117 → Long-range connection → TRK-119 → Internet → FreshTrace',
   },
 ];

@@ -18,10 +18,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSelectRole }) => {
             <Cpu className="h-6 w-6" />
           </div>
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Welcome to FreshTrace AI
+            Welcome to FreshTrace
           </h1>
           <p className="text-base text-slate-600 font-medium">
-            Choose how you use FreshTrace AI.
+            Choose how you use FreshTrace.
           </p>
         </div>
 

@@ -44,7 +44,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'live-map' as FleetNavTab, label: 'Live Map', icon: MapPin },
     { id: 'fleet' as FleetNavTab, label: 'My Fleet', icon: Boxes },
     { id: 'shipments' as FleetNavTab, label: 'Shipments', icon: Truck, badge: shipmentCount.toString() },
-    { id: 'ai-insights' as FleetNavTab, label: 'AI Insights', icon: Sparkles, badge: 'AI' },
+    { id: 'ai-insights' as FleetNavTab, label: 'AI Insights', icon: Sparkles, badge: '' },
     { id: 'alerts' as FleetNavTab, label: 'Alerts', icon: AlertTriangle, badge: alertCount.toString(), isAlert: true },
     { id: 'traceability' as FleetNavTab, label: 'Traceability', icon: FileSearch },
     { id: 'record-verification' as FleetNavTab, label: 'Record Verification', icon: CheckCircle2 },
@@ -56,7 +56,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'overview' as WholesalerNavTab, label: 'Overview', icon: LayoutDashboard },
     { id: 'incoming-shipments' as WholesalerNavTab, label: 'Incoming Shipments', icon: Truck, badge: '8' },
     { id: 'shipment-check' as WholesalerNavTab, label: 'Shipment Check', icon: PackageCheck, badge: 'Check' },
-    { id: 'ai-insights' as WholesalerNavTab, label: 'AI Insights', icon: Sparkles, badge: 'AI' },
+    { id: 'ai-insights' as WholesalerNavTab, label: 'AI Insights', icon: Sparkles, badge: '' },
     { id: 'traceability' as WholesalerNavTab, label: 'Traceability', icon: FileSearch },
     { id: 'record-verification' as WholesalerNavTab, label: 'Record Verification', icon: CheckCircle2 },
     { id: 'alerts' as WholesalerNavTab, label: 'Alerts', icon: AlertTriangle, badge: '2', isAlert: true },
@@ -96,30 +96,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   if (isFleetOwner) onFleetTabChange(item.id as FleetNavTab);
                   else onWholesalerTabChange(item.id as WholesalerNavTab);
                 }}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${
-                  isActive
-                    ? 'bg-slate-900 text-white shadow-xs'
-                    : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
-                }`}
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition cursor-pointer ${isActive
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  }`}
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <Icon
-                    className={`h-4 w-4 shrink-0 ${
-                      isActive ? 'text-white' : 'text-slate-500'
-                    }`}
+                    className={`h-4 w-4 shrink-0 ${isActive ? 'text-white' : 'text-slate-500'
+                      }`}
                   />
                   <span className="truncate">{item.label}</span>
                 </div>
 
                 {item.badge && (
                   <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                      item.isAlert
-                        ? 'bg-red-500 text-white'
-                        : isActive
+                    className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${item.isAlert
+                      ? 'bg-red-500 text-white'
+                      : isActive
                         ? 'bg-slate-800 text-sky-400'
                         : 'bg-slate-100 text-slate-600'
-                    }`}
+                      }`}
                   >
                     {item.badge}
                   </span>

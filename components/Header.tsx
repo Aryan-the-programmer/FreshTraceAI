@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div>
             <h1 className="text-base font-black tracking-tight text-slate-900 leading-none">
-              FreshTrace AI
+              FreshTrace
             </h1>
             <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
               {currentRole === 'fleet_owner' ? 'Fleet Owner Portal' : 'Wholesaler Portal'}

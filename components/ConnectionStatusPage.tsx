@@ -48,7 +48,7 @@ export const ConnectionStatusPage: React.FC<ConnectionStatusPageProps> = ({
             </div>
             <ArrowRight className="h-5 w-5 text-sky-400 rotate-90 sm:rotate-0" />
             <div className="rounded-lg bg-emerald-950 p-3 border border-emerald-800 text-emerald-300 w-full sm:w-auto">
-              <span className="font-bold block">Internet → FreshTrace AI</span>
+              <span className="font-bold block">Internet → FreshTrace</span>
               <span className="text-[10px]">Cloud Portal</span>
             </div>
           </div>
